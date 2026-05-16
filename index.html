@@ -1,165 +1,241 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MBG</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MBG</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  background: #050d06;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Share Tech Mono', monospace;
-  overflow: hidden;
-  cursor: crosshair;
-}
+    body {
+      background: url("background.png") no-repeat center center fixed;
+      background-size: cover;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Share Tech Mono", monospace;
+      overflow: hidden;
+      cursor: crosshair;
+    }
 
-canvas {
-  position: fixed;
-  inset: 0;
-  opacity: 0.06;
-  pointer-events: none;
-}
+    canvas {
+      position: fixed;
+      inset: 0;
+      opacity: 0.06;
+      pointer-events: none;
+    }
 
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,65,0.012) 2px, rgba(0,255,65,0.012) 4px);
-  pointer-events: none;
-}
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 255, 65, 0.012) 2px,
+          rgba(0, 255, 65, 0.012) 4px);
+      pointer-events: none;
+    }
 
-.center {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  user-select: none;
-}
+    .center {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      user-select: none;
+    }
 
-.mbg {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900;
-  font-size: clamp(5rem, 20vw, 14rem);
-  color: #00ff41;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  text-shadow:
-    0 0 60px rgba(0,255,65,0.25),
-    0 0 120px rgba(0,255,65,0.1);
-  animation: pulse 4s ease-in-out infinite;
-  position: relative;
-}
+    .mbg {
+      font-family: "Orbitron", sans-serif;
+      font-weight: 900;
+      font-size: clamp(5rem, 20vw, 14rem);
+      color: #00ff41;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      text-shadow:
+        0 0 60px rgba(0, 255, 65, 0.25),
+        0 0 120px rgba(0, 255, 65, 0.1);
+      animation: pulse 4s ease-in-out infinite;
+      position: relative;
+    }
 
-@keyframes pulse {
-  0%, 100% { text-shadow: 0 0 60px rgba(0,255,65,0.25), 0 0 120px rgba(0,255,65,0.1); }
-  50% { text-shadow: 0 0 80px rgba(0,255,65,0.4), 0 0 160px rgba(0,255,65,0.2); }
-}
+    @keyframes pulse {
 
-.mbg::before {
-  content: 'MBG';
-  position: absolute;
-  inset: 0;
-  color: #ff003c;
-  animation: glitch-r 5s infinite;
-  clip-path: inset(0 0 70% 0);
-}
+      0%,
+      100% {
+        text-shadow:
+          0 0 60px rgba(0, 255, 65, 0.25),
+          0 0 120px rgba(0, 255, 65, 0.1);
+      }
 
-.mbg::after {
-  content: 'MBG';
-  position: absolute;
-  inset: 0;
-  color: #00ffff;
-  animation: glitch-b 5s infinite 0.15s;
-  clip-path: inset(70% 0 0 0);
-}
+      50% {
+        text-shadow:
+          0 0 80px rgba(0, 255, 65, 0.4),
+          0 0 160px rgba(0, 255, 65, 0.2);
+      }
+    }
 
-@keyframes glitch-r {
-  0%,88%,100% { transform: none; opacity: 0; }
-  89% { transform: translate(-5px, 2px); opacity: 1; }
-  91% { transform: translate(3px); opacity: 1; }
-  93% { opacity: 0; }
-}
-@keyframes glitch-b {
-  0%,88%,100% { transform: none; opacity: 0; }
-  89% { transform: translate(5px, -2px); opacity: 1; }
-  91% { transform: translate(-3px); opacity: 1; }
-  93% { opacity: 0; }
-}
+    .mbg::before {
+      content: "MBG";
+      position: absolute;
+      inset: 0;
+      color: #ff003c;
+      animation: glitch-r 5s infinite;
+      clip-path: inset(0 0 70% 0);
+    }
 
-.tagline {
-  font-size: clamp(0.55rem, 2vw, 0.85rem);
-  color: #3a6b3c;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  margin-top: 0.8rem;
-}
+    .mbg::after {
+      content: "MBG";
+      position: absolute;
+      inset: 0;
+      color: #00ffff;
+      animation: glitch-b 5s infinite 0.15s;
+      clip-path: inset(70% 0 0 0);
+    }
 
-.joke {
-  margin-top: 2.5rem;
-  font-size: clamp(0.6rem, 1.5vw, 0.8rem);
-  color: #1e4020;
-  letter-spacing: 0.15em;
-  border: 1px solid #0f2710;
-  display: inline-block;
-  padding: 0.5rem 1.5rem;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: color 0.3s, border-color 0.3s;
-}
+    @keyframes glitch-r {
 
-.joke:hover {
-  color: #00ff41;
-  border-color: #1a3d1c;
-}
+      0%,
+      88%,
+      100% {
+        transform: none;
+        opacity: 0;
+      }
 
-.joke span { color: #ff003c; }
+      89% {
+        transform: translate(-5px, 2px);
+        opacity: 1;
+      }
 
-.dot {
-  display: inline-block;
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: #00ff41;
-  margin-bottom: 0.2rem;
-  animation: blink 1s step-end infinite;
-  vertical-align: middle;
-}
-@keyframes blink { 50% { opacity: 0; } }
-</style>
+      91% {
+        transform: translate(3px);
+        opacity: 1;
+      }
+
+      93% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes glitch-b {
+
+      0%,
+      88%,
+      100% {
+        transform: none;
+        opacity: 0;
+      }
+
+      89% {
+        transform: translate(5px, -2px);
+        opacity: 1;
+      }
+
+      91% {
+        transform: translate(-3px);
+        opacity: 1;
+      }
+
+      93% {
+        opacity: 0;
+      }
+    }
+
+    .tagline {
+      font-size: clamp(0.55rem, 2vw, 0.85rem);
+      color: #3a6b3c;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      margin-top: 0.8rem;
+    }
+
+    .joke {
+      margin-top: 2.5rem;
+      font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+      color: #1e4020;
+      letter-spacing: 0.15em;
+      border: 1px solid #0f2710;
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition:
+        color 0.3s,
+        border-color 0.3s;
+    }
+
+    .joke:hover {
+      color: #00ff41;
+      border-color: #1a3d1c;
+    }
+
+    .joke span {
+      color: #ff003c;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #00ff41;
+      margin-bottom: 0.2rem;
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<canvas id="c"></canvas>
+  <canvas id="c"></canvas>
 
-<div class="center">
-  <div class="mbg">MBG</div>
-  <div class="tagline"><span class="dot"></span> &nbsp; Malicious Binary Generator &nbsp; <span class="dot"></span></div>
-  <div class="joke">bukan <span>Makanan Bergizi Gratis</span> ya 🤫</div>
-</div>
+  <div class="center">
+    <div class="mbg">MBG</div>
+    <div class="tagline">
+      <span class="dot"></span> &nbsp; Malicious Binary Generator &nbsp;
+      <span class="dot"></span>
+    </div>
+    <div class="joke">kita suka<span>Makanan Bergizi Gratis</span></div>
+  </div>
 
-<script>
-const c = document.getElementById('c');
-const x = c.getContext('2d');
-c.width = innerWidth; c.height = innerHeight;
-const ch = '01アイウカキMBG<>{}[]#%';
-const cols = Math.floor(innerWidth / 14);
-const drops = Array(cols).fill(1);
-setInterval(() => {
-  x.fillStyle = 'rgba(5,13,6,0.05)';
-  x.fillRect(0,0,c.width,c.height);
-  x.fillStyle = '#00ff41';
-  x.font = '13px Share Tech Mono';
-  drops.forEach((y,i) => {
-    x.fillText(ch[Math.floor(Math.random()*ch.length)], i*14, y*14);
-    if (y*14 > c.height && Math.random() > 0.975) drops[i] = 0;
-    drops[i]++;
-  });
-}, 50);
-window.onresize = () => { c.width = innerWidth; c.height = innerHeight; };
-</script>
+  <script>
+    const c = document.getElementById("c");
+    const x = c.getContext("2d");
+    c.width = innerWidth;
+    c.height = innerHeight;
+    const ch = "01アイウカキMBG<>{}[]#%";
+    const cols = Math.floor(innerWidth / 14);
+    const drops = Array(cols).fill(1);
+    setInterval(() => {
+      x.fillStyle = "rgba(5,13,6,0.05)";
+      x.fillRect(0, 0, c.width, c.height);
+      x.fillStyle = "#00ff41";
+      x.font = "13px Share Tech Mono";
+      drops.forEach((y, i) => {
+        x.fillText(ch[Math.floor(Math.random() * ch.length)], i * 14, y * 14);
+        if (y * 14 > c.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      });
+    }, 50);
+    window.onresize = () => {
+      c.width = innerWidth;
+      c.height = innerHeight;
+    };
+  </script>
 </body>
+
 </html>
